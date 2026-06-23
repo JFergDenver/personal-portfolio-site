@@ -1,0 +1,229 @@
+/* ============================
+   Draft board table
+   ============================ */
+.table-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.draft-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.draft-table th,
+.draft-table td {
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  overflow-wrap: break-word;
+}
+
+.draft-table tbody tr:nth-child(even) {
+  background: var(--bg-alt);
+}
+
+.draft-table thead th {
+  background: var(--bg-alt);
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.7rem;
+  position: sticky;
+  top: 0;
+}
+
+.draft-table tbody tr:hover {
+  background: var(--bg-alt);
+}
+
+.draft-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* col 1: checkbox */
+.draft-table th:nth-child(1),
+.draft-table td:nth-child(1) {
+  width: 3%;
+  text-align: center;
+}
+
+/* col 2: Rank */
+.draft-table th:nth-child(2),
+.draft-table td:nth-child(2) {
+  width: 4%;
+}
+
+/* col 3: Rd */
+.draft-table th:nth-child(3),
+.draft-table td:nth-child(3) {
+  width: 4%;
+}
+
+/* col 4: Pos Rk */
+.draft-table th:nth-child(4),
+.draft-table td:nth-child(4) {
+  width: 5%;
+}
+
+/* col 5: Player */
+.draft-table th:nth-child(5),
+.draft-table td:nth-child(5) {
+  width: 13%;
+}
+
+/* col 6: Logo */
+.draft-table th:nth-child(6),
+.draft-table td:nth-child(6) {
+  width: 4%;
+  text-align: center;
+}
+
+/* col 7: Team  col 8: Pos */
+.draft-table th:nth-child(7),
+.draft-table td:nth-child(7),
+.draft-table th:nth-child(8),
+.draft-table td:nth-child(8) {
+  width: 4%;
+}
+
+/* col 9: Bye  col 10: Proj Pts  col 11: Tier */
+.draft-table th:nth-child(9),
+.draft-table td:nth-child(9),
+.draft-table th:nth-child(10),
+.draft-table td:nth-child(10),
+.draft-table th:nth-child(11),
+.draft-table td:nth-child(11) {
+  width: 5%;
+}
+
+/* col 13: 2026 Status */
+.draft-table th:nth-child(13),
+.draft-table td:nth-child(13) {
+  width: 13%;
+}
+
+/* col 14: Risk */
+.draft-table th:nth-child(14),
+.draft-table td:nth-child(14) {
+  width: 5%;
+}
+
+.draft-table .notes-cell {
+  width: 22%;
+  color: var(--text-dim);
+}
+
+/* ============================
+   Team logo badges
+   ============================ */
+.team-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.6em;
+  padding: 0.2em 0.3em;
+  border-radius: 3px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #fff;
+}
+
+.team-ARI { background: #97233f; }
+.team-ATL { background: #a71930; }
+.team-BAL { background: #241773; }
+.team-BUF { background: #00338d; }
+.team-CAR { background: #0085ca; }
+.team-CIN { background: #fb4f14; }
+.team-DAL { background: #041e42; }
+.team-DEN { background: #fb4f14; }
+.team-DET { background: #0076b6; }
+.team-GB  { background: #203731; }
+.team-JAC { background: #006778; }
+.team-KC  { background: #e31837; }
+.team-LAR { background: #003594; }
+.team-LV  { background: #a5acaf; color: #000; }
+.team-MIA { background: #008e97; }
+.team-MIN { background: #4f2683; }
+.team-NE  { background: #002244; }
+.team-NO  { background: #d3bc8d; color: #000; }
+.team-NYG { background: #0b2265; }
+.team-NYJ { background: #125740; }
+.team-PHI { background: #004c54; }
+.team-PIT { background: #ffb612; color: #000; }
+.team-SEA { background: #69be28; color: #000; }
+.team-SF  { background: #aa0000; }
+.team-TB  { background: #d50a0a; }
+.team-TEN { background: #4b92db; }
+.team-WAS { background: #5a1414; }
+.team-HOU { background: #03202f; }
+.team-FA  { background: #444; color: #ccc; }
+
+/* ============================
+   Drafted rows
+   ============================ */
+.draft-table .drafted-check {
+  width: 1.1rem;
+  height: 1.1rem;
+  cursor: pointer;
+  accent-color: var(--accent);
+}
+
+.draft-table tr.drafted td {
+  opacity: 0.35;
+  text-decoration: line-through;
+}
+
+.draft-table tr.drafted td.drafted-col {
+  text-decoration: none;
+  opacity: 1;
+}
+
+.draft-table a {
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+}
+
+.draft-table a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.risk-low {
+  color: var(--accent);
+}
+
+.risk-medium {
+  color: #f5d76e;
+}
+
+.risk-high {
+  color: #f08a8a;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  margin-bottom: 1.5rem;
+}
+
+.legend span::before {
+  content: "\25cf";
+  margin-right: 0.35rem;
+}
+
+.legend .risk-low::before,
+.legend .risk-medium::before,
+.legend .risk-high::before {
+  content: "\25cf";
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Photo Collage Template</title>
+  <meta name="description" content="A simple drag-and-drop photo collage template." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/collage.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrapper">
+      <div class="site-title"><span class="prompt">~$</span> whoami</div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">home</a></li>
+          <li><a href="projects.html">projects</a></li>
+          <li><a href="about.html">about</a></li>
+          <li><a href="contact.html">contact</a></li>
+          <li><a href="nfl-draft-2026.html">2026 nfl draft</a></li>
+          <li><a href="photo-collage.html">photo collage</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrapper">
+    <section class="hero">
+      <h1>Photo Collage Template</h1>
+      <p>Click any tile to pick a photo, or drag an image directly onto it.</p>
+    </section>
+
+    <section>
+      <h2>collage</h2>
+      <div class="collage-controls">
+        <label for="layout-select">layout</label>
+        <select id="layout-select">
+          <option value="grid-4">4 photos — grid</option>
+          <option value="grid-6">6 photos — grid</option>
+          <option value="feature">1 large + 4 small</option>
+        </select>
+        <button type="button" id="reset-btn" class="btn">reset</button>
+      </div>
+
+      <div class="collage" id="collage" data-layout="grid-4">
+        <div class="collage-tile" data-slot="0">
+          <span class="tile-label">Monty Hiking</span>
+          <input type="file" accept="image/*" class="tile-input" />
+        </div>
+        <div class="collage-tile" data-slot="1">
+          <span class="tile-label">Monty Puppy Car</span>
+          <input type="file" accept="image/*" class="tile-input" />
+        </div>
+        <div class="collage-tile" data-slot="2">
+          <span class="tile-label">+ add photo</span>
+          <input type="file" accept="image/*" class="tile-input" />
+        </div>
+        <div class="collage-tile" data-slot="3">
+          <span class="tile-label">+ add photo</span>
+          <input type="file" accept="image/*" class="tile-input" />
+        </div>
+        <div class="collage-tile" data-slot="4">
+          <span class="tile-label">+ add photo</span>
+          <input type="file" accept="image/*" class="tile-input" />
+        </div>
+        <div class="collage-tile" data-slot="5">
+          <span class="tile-label">+ add photo</span>
+          <input type="file" accept="image/*" class="tile-input" />
+        </div>
+      </div>
+
+      <div class="links-row">
+        <button type="button" id="download-btn" class="btn">download as image</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>notes</h2>
+      <p>
+        Photos are loaded locally in your browser and never uploaded anywhere. Switch layouts
+        with the dropdown above — extra tiles are hidden automatically. "Download as image"
+        renders the collage to a PNG using the canvas API.
+      </p>
+      <p>
+        To preset photos for each tile, drop image files into
+        <code>images/collage/</code> and reference them by filename in
+        <code>js/collage-config.js</code> — e.g.
+        <code>1: "beach.jpg"</code>. Configured tiles load automatically when the page
+        opens. Clicking a filled tile opens a larger preview; drag a new image onto a
+        tile to replace its photo.
+      </p>
+    </section>
+  </main>
+
+  <div class="lightbox" id="lightbox">
+    <img id="lightbox-img" alt="" />
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrapper">
+      <span>&copy; <span id="year"></span> Jeff Ferguson</span>
+      <span>Built with HTML, CSS &amp; JS</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/collage-config.js"></script>
+  <script src="js/collage.js"></script>
+</body>
+</html>

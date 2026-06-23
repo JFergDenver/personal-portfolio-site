@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jeff Ferguson — Contact</title>
+  <meta name="description" content="Get in touch with Jeff Ferguson." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrapper">
+      <div class="site-title"><span class="prompt">~$</span> whoami</div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">home</a></li>
+          <li><a href="projects.html">projects</a></li>
+          <li><a href="about.html">about</a></li>
+          <li><a href="contact.html">contact</a></li>
+          <li><a href="nfl-draft-2026.html">2026 nfl draft</a></li>
+          <li><a href="photo-collage.html">photo collage</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrapper">
+    <section class="hero">
+      <h1>Contact</h1>
+      <p>Have a project in mind or just want to say hi? Send a message below.</p>
+    </section>
+
+    <section>
+      <h2>message</h2>
+      <form id="contact-form" novalidate>
+        <div>
+          <label for="name">name</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div>
+          <label for="email">email</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div>
+          <label for="message">message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <button type="submit">send message</button>
+        <p class="form-status" id="form-status" role="status"></p>
+      </form>
+    </section>
+
+    <section>
+      <h2>elsewhere</h2>
+      <div class="links-row">
+        <a class="btn" href="mailto:fergjeff@gmail.com">email</a>
+        <a class="btn" href="#">github</a>
+        <a class="btn" href="#">linkedin</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrapper">
+      <span>&copy; <span id="year"></span> Jeff Ferguson</span>
+      <span>Built with HTML, CSS &amp; JS</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/contact.js"></script>
+</body>
+</html>

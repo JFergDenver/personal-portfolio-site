@@ -1,0 +1,167 @@
+/* ============================
+   Collage controls
+   ============================ */
+.collage-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.collage-controls label {
+  margin-bottom: 0;
+}
+
+.collage-controls select {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+}
+
+.collage-controls select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.collage-controls .btn {
+  font-family: var(--font-mono);
+  background: none;
+  cursor: pointer;
+}
+
+/* ============================
+   Collage grid
+   ============================ */
+.collage {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 6px;
+  aspect-ratio: 1 / 1;
+  margin-bottom: 1.5rem;
+}
+
+.collage-tile {
+  position: relative;
+  border: 1px dashed var(--border);
+  border-radius: 4px;
+  background-color: var(--bg-alt);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+  min-height: 0;
+  transition: border-color 0.15s ease;
+}
+
+.collage-tile:hover {
+  border-color: var(--accent);
+}
+
+.collage-tile.has-image {
+  border-style: solid;
+}
+
+.collage-tile.has-image:hover {
+  border-color: var(--accent);
+  opacity: 0.92;
+}
+
+.collage-tile.has-image .tile-label {
+  display: none;
+}
+
+.collage-tile.drag-over {
+  border-color: var(--accent);
+  border-style: solid;
+}
+
+.tile-label {
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  text-align: center;
+  padding: 0.5rem;
+  pointer-events: none;
+}
+
+.tile-input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* ============================
+   Layouts
+   ============================ */
+.collage[data-layout="grid-4"] {
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.collage[data-layout="grid-4"] .collage-tile[data-slot="4"],
+.collage[data-layout="grid-4"] .collage-tile[data-slot="5"] {
+  display: none;
+}
+
+.collage[data-layout="grid-6"] {
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.collage[data-layout="feature"] {
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.collage[data-layout="feature"] .collage-tile[data-slot="0"] {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.collage[data-layout="feature"] .collage-tile[data-slot="5"] {
+  display: none;
+}
+
+/* ============================
+   Lightbox
+   ============================ */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(13, 15, 18, 0.9);
+  padding: 1.5rem;
+  z-index: 100;
+  cursor: zoom-out;
+}
+
+.lightbox.open {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+@media (min-width: 600px) {
+  .collage[data-layout="grid-6"] {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+}
