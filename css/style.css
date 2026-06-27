@@ -3,10 +3,10 @@
    ============================ */
 :root {
   /* Penn State — Nittany Navy #001E62 / White #FFFFFF */
-  --bg: #000d2e;
-  --bg-alt: #001650;
+  --bg: #1a2d5a;
+  --bg-alt: #243d72;
   --text: #f0f0f0;
-  --text-dim: #8899cc;
+  --text-dim: #aabde0;
   --accent: #ffffff;
   --border: #001e62;
   --max-width: 720px;
