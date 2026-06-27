@@ -134,7 +134,7 @@
     canvas.height = Math.round(rect.height * scale);
 
     var ctx = canvas.getContext("2d");
-    ctx.fillStyle = "#0d0f12";
+    ctx.fillStyle = "#001240";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     tiles.forEach(function (tile) {
@@ -151,9 +151,9 @@
       if (img) {
         drawImageCover(ctx, img, x, y, w, h);
       } else {
-        ctx.fillStyle = "#15181d";
+        ctx.fillStyle = "#001f60";
         ctx.fillRect(x, y, w, h);
-        ctx.strokeStyle = "#2a2f37";
+        ctx.strokeStyle = "#003080";
         ctx.strokeRect(x, y, w, h);
       }
     });

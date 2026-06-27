@@ -2,12 +2,13 @@
    Variables & Reset
    ============================ */
 :root {
-  --bg: #0d0f12;
-  --bg-alt: #15181d;
-  --text: #d4d8dd;
-  --text-dim: #888f99;
-  --accent: #6ee7b7;
-  --border: #2a2f37;
+  /* Philadelphia Phillies — Red #E81828 / Navy #002D72 */
+  --bg: #001240;
+  --bg-alt: #001f60;
+  --text: #e8eaf0;
+  --text-dim: #7f90bb;
+  --accent: #e81828;
+  --border: #003080;
   --max-width: 720px;
   --font-mono: "JetBrains Mono", "Fira Code", "SF Mono", "Consolas", "Menlo", monospace;
 }
