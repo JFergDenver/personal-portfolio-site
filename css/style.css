@@ -2,13 +2,13 @@
    Variables & Reset
    ============================ */
 :root {
-  /* Philadelphia Flyers — Orange #F74902 / Black #000000 */
-  --bg: #0a0a0a;
-  --bg-alt: #1a1a1a;
-  --text: #e8e8e8;
-  --text-dim: #888888;
-  --accent: #f74902;
-  --border: #2e2e2e;
+  /* Penn State — Nittany Navy #001E62 / White #FFFFFF */
+  --bg: #000d2e;
+  --bg-alt: #001650;
+  --text: #f0f0f0;
+  --text-dim: #8899cc;
+  --accent: #ffffff;
+  --border: #001e62;
   --max-width: 720px;
   --font-mono: "JetBrains Mono", "Fira Code", "SF Mono", "Consolas", "Menlo", monospace;
 }
