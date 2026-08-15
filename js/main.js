@@ -18,3 +18,23 @@
     yearEl.textContent = new Date().getFullYear();
   }
 })();
+
+// Mobile nav toggle — nav collapses behind this button under 640px
+(function () {
+  var toggle = document.getElementById("nav-toggle");
+  var nav = document.getElementById("main-nav");
+  if (!toggle || !nav) return;
+
+  toggle.addEventListener("click", function () {
+    var isOpen = nav.classList.toggle("open");
+    toggle.setAttribute("aria-expanded", isOpen);
+  });
+
+  // Collapse again once a link is picked, so it doesn't stay open on navigation
+  nav.addEventListener("click", function (e) {
+    if (e.target.tagName === "A") {
+      nav.classList.remove("open");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+  });
+})();

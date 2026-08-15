@@ -1,15 +1,23 @@
-/* ============================
-   Variables & Reset
-   ============================ */
+/* ============================================================
+   style.css — Global styles, loaded on every page. Design
+   language borrowed from 8deuce.com: component-scoped custom
+   properties, a sticky accent-colored header over a white page,
+   system-ui type, card surfaces with shadow + radius.
+   ============================================================ */
+
 :root {
-  /* Penn State — Nittany Navy #001E62 / White #FFFFFF */
-  --bg: #1a2d5a;
-  --bg-alt: #243d72;
-  --text: #f0f0f0;
-  --text-dim: #aabde0;
-  --accent: #ffffff;
-  --border: #001e62;
+  --bg: #ffffff;
+  --bg-alt: #f4f6f6;
+  --text: #111111;
+  --text-dim: #5b6666;
+  --accent: #004c54;
+  --accent-hover: #026b74;
+  --accent-soft: #e5eeee;
+  --border: #dfe4e4;
+  --radius: 12px;
+  --shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
   --max-width: 720px;
+  --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Tahoma, sans-serif;
   --font-mono: "JetBrains Mono", "Fira Code", "SF Mono", "Consolas", "Menlo", monospace;
 }
 
@@ -21,12 +29,13 @@
 
 html {
   font-size: 16px;
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: var(--font-mono);
+  font-family: var(--font);
   line-height: 1.6;
   font-size: 0.95rem;
   -webkit-font-smoothing: antialiased;
@@ -47,9 +56,9 @@ img {
   display: block;
 }
 
-/* ============================
+/* ============================================================
    Layout
-   ============================ */
+   ============================================================ */
 .wrapper {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -60,76 +69,131 @@ img {
   max-width: 1200px;
 }
 
-/* ============================
-   Header / Nav
-   ============================ */
+/* ============================================================
+   Header / Nav — sticky accent bar over the white page, same
+   shape as 8deuce.com's .ed-header: hover states are a lighter
+   shade of the bar itself rather than a separate color.
+   ============================================================ */
 .site-header {
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--accent);
+  box-shadow: var(--shadow);
 }
 
 .site-header .wrapper {
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  min-height: 58px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .site-title {
-  font-size: 1.1rem;
+  color: #fff;
   font-weight: 700;
-  color: var(--text);
+  font-size: 1.05rem;
+  padding: 0.9rem 0;
 }
 
 .site-title .prompt {
-  color: var(--accent);
+  /* keep the terminal mark in mono even though body type is now sans */
+  font-family: var(--font-mono);
+  color: #8fd7dc;
+}
+
+.nav-toggle {
+  display: none;
+  margin-left: auto;
+  background: transparent;
+  border: 0;
+  color: #fff;
+  font-size: 1.3rem;
+  line-height: 1;
+  padding: 0.6rem 0.5rem;
+  cursor: pointer;
 }
 
 nav.main-nav {
-  margin-top: 0.9rem;
+  margin-left: auto;
 }
 
 nav.main-nav ul {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 1.25rem;
 }
 
 nav.main-nav a {
-  color: var(--text-dim);
-  font-size: 0.9rem;
-  letter-spacing: 0.02em;
-  padding-bottom: 0.15rem;
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.88rem;
+  letter-spacing: 0.01em;
+  padding: 0.95rem 0.75rem;
   border-bottom: 2px solid transparent;
+  transition: background 0.15s ease;
 }
 
 nav.main-nav a:hover,
 nav.main-nav a:focus {
-  color: var(--text);
+  background: var(--accent-hover);
+  color: #fff;
   text-decoration: none;
 }
 
 nav.main-nav a.active {
-  color: var(--accent);
-  border-bottom-color: var(--accent);
+  color: #fff;
+  border-bottom-color: #fff;
 }
 
-/* ============================
+/* Collapse the nav behind a toggle below 640px, same breakpoint
+   pattern as 8deuce's .ed-mobile-toggle. */
+@media (max-width: 640px) {
+  .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  nav.main-nav {
+    display: none;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  nav.main-nav.open {
+    display: block;
+  }
+
+  nav.main-nav ul {
+    flex-direction: column;
+  }
+
+  nav.main-nav a {
+    padding: 0.85rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+}
+
+/* ============================================================
    Hero / Sections
-   ============================ */
+   ============================================================ */
 .hero {
-  margin-bottom: 2.5rem;
+  margin: 2.5rem 0;
 }
 
 .hero h1 {
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   font-weight: 700;
-  line-height: 1.4;
+  line-height: 1.3;
   margin-bottom: 0.75rem;
 }
 
 .hero .cursor {
   display: inline-block;
-  width: 0.55em;
+  width: 0.5em;
   background: var(--accent);
   margin-left: 0.15em;
   animation: blink 1s steps(2, start) infinite;
@@ -148,6 +212,7 @@ nav.main-nav a.active {
 
 .hero .tagline {
   color: var(--accent);
+  font-weight: 600;
 }
 
 section {
@@ -155,7 +220,7 @@ section {
 }
 
 section h2 {
-  font-size: 1rem;
+  font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--text-dim);
@@ -168,11 +233,13 @@ section h2 {
 section h2::before {
   content: "//";
   color: var(--accent);
+  font-family: var(--font-mono);
 }
 
-/* ============================
-   Cards (project previews, etc.)
-   ============================ */
+/* ============================================================
+   Cards (project previews, experience, etc.) — white surface,
+   radius + shadow lifted straight from 8deuce.com's card style.
+   ============================================================ */
 .card-list {
   display: grid;
   grid-template-columns: 1fr;
@@ -180,15 +247,18 @@ section h2::before {
 }
 
 .card {
+  background: #fff;
   border: 1px solid var(--border);
-  background: var(--bg-alt);
-  border-radius: 6px;
-  padding: 1.1rem 1.2rem;
-  transition: border-color 0.15s ease, transform 0.15s ease;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.2rem 1.3rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
 }
 
 .card:hover {
   border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
 .card h3 {
@@ -211,29 +281,34 @@ section h2::before {
 
 .tag {
   font-size: 0.75rem;
+  font-weight: 600;
   color: var(--accent);
-  border: 1px solid var(--border);
+  background: var(--accent-soft);
   border-radius: 4px;
-  padding: 0.15rem 0.5rem;
+  padding: 0.15rem 0.55rem;
 }
 
-/* ============================
+/* ============================================================
    Buttons / Links
-   ============================ */
+   ============================================================ */
 .btn {
   display: inline-block;
+  background: var(--accent);
+  color: #fff;
   border: 1px solid var(--accent);
-  color: var(--accent);
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
+  padding: 0.55rem 1.1rem;
+  border-radius: 6px;
   font-size: 0.85rem;
-  transition: background 0.15s ease, color 0.15s ease;
+  font-weight: 600;
+  transition: filter 0.15s ease;
 }
 
 .btn:hover,
 .btn:focus {
-  background: var(--accent);
-  color: var(--bg);
+  /* brighten in place rather than swap colors — matches 8deuce's status-btn hover.
+     Don't force color here: .collage-controls overrides .btn to a ghost style,
+     and a forced #fff would go invisible against the white page on hover. */
+  filter: brightness(1.18);
   text-decoration: none;
 }
 
@@ -244,9 +319,9 @@ section h2::before {
   margin-top: 1.5rem;
 }
 
-/* ============================
+/* ============================================================
    Footer
-   ============================ */
+   ============================================================ */
 .site-footer {
   border-top: 1px solid var(--border);
   margin-top: 2rem;
@@ -263,9 +338,9 @@ section h2::before {
   padding-bottom: 1.5rem;
 }
 
-/* ============================
+/* ============================================================
    Forms (contact page)
-   ============================ */
+   ============================================================ */
 form {
   display: flex;
   flex-direction: column;
@@ -283,19 +358,20 @@ label {
 input,
 textarea {
   width: 100%;
-  background: var(--bg-alt);
+  background: #fff;
   border: 1px solid var(--border);
   color: var(--text);
-  font-family: var(--font-mono);
+  font-family: var(--font);
   font-size: 0.9rem;
   padding: 0.6rem 0.7rem;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 input:focus,
 textarea:focus {
   outline: none;
   border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
 textarea {
@@ -306,19 +382,19 @@ textarea {
 button[type="submit"] {
   cursor: pointer;
   background: var(--accent);
-  color: var(--bg);
+  color: #fff;
   border: none;
-  font-family: var(--font-mono);
+  font-family: var(--font);
   font-size: 0.9rem;
   font-weight: 700;
   padding: 0.65rem 1.2rem;
-  border-radius: 4px;
+  border-radius: 6px;
   align-self: flex-start;
-  transition: opacity 0.15s ease;
+  transition: filter 0.15s ease;
 }
 
 button[type="submit"]:hover {
-  opacity: 0.85;
+  filter: brightness(1.18);
 }
 
 .form-status {
@@ -327,9 +403,9 @@ button[type="submit"]:hover {
   min-height: 1.2rem;
 }
 
-/* ============================
+/* ============================================================
    Responsive
-   ============================ */
+   ============================================================ */
 @media (min-width: 600px) {
   .wrapper {
     padding-left: 2rem;
@@ -337,10 +413,54 @@ button[type="submit"]:hover {
   }
 
   .hero h1 {
-    font-size: 2rem;
+    font-size: 2.1rem;
   }
 
   .card-list {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ============================================================
+   Motion — honour an explicit OS request for less motion.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================================
+   Print — drop the accent header chrome and run content in
+   plain black-on-white; nothing here needs a colored surface.
+   ============================================================ */
+@media print {
+  .site-header,
+  .nav-toggle {
+    display: none !important;
+  }
+
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  .card {
+    box-shadow: none !important;
+    border-color: #000;
+  }
+
+  a {
+    text-decoration: none;
+    color: #000 !important;
   }
 }
