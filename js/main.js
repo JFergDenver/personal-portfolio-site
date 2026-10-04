@@ -38,3 +38,13 @@
     }
   });
 })();
+
+// Masthead dateline
+(function () {
+  var el = document.getElementById("today");
+  if (el) {
+    el.textContent = new Date().toLocaleDateString("en-US", {
+      weekday: "long", year: "numeric", month: "long", day: "numeric"
+    });
+  }
+})();
