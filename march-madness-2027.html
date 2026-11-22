@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>March Madness 2027 Tracker — Jeff Ferguson</title>
+  <meta name="description" content="March Madness 2027 tracker — this week's games, five teams followed, and the top 50 by Torvik T-Rank." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/madness.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrapper">
+      <div class="site-title"><a class="nameplate" href="index.html">Jeff Ferguson</a><div class="dateline"><span>Vol. I</span><span id="today"></span><span>Aspiring Software Developer</span></div></div>
+      <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="main-nav">&#9776;</button>
+      <nav class="main-nav" id="main-nav">
+        <ul>
+          <li><a href="index.html">home</a></li>
+          <li><a href="projects.html">projects</a></li>
+          <li><a href="about.html">about</a></li>
+          <li><a href="contact.html">contact</a></li>
+          <li><a href="nfl-draft-2026.html">2026 nfl draft</a></li>
+          <li><a href="march-madness-2027.html" class="active">march madness</a></li>
+          <li><a href="photo-collage.html">photo collage</a></li>
+          <li><a href="spain-2026.html">spain 2026</a></li>
+          <li><a href="blog.html">blog</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrapper wrapper--wide">
+    <section class="hero">
+      <h1>March Madness 2027 Tracker</h1>
+      <p class="hero-lede">Bracket prep | 2027 NCAA men's tournament | this week's games, five teams followed, and the top 50 by Torvik T-Rank.</p>
+      <div class="dateline status-line">
+        <span>Data as of <span id="asof"></span></span>
+        <span>NCAA NET not out until about Dec 1</span>
+        <span>KenPom not included</span>
+      </div>
+      <nav class="jump" aria-label="On this page">
+        <a href="#games">this week</a><a href="#teams">your teams</a><a href="#map">efficiency map</a><a href="#top50">top 50</a><a href="#sources">sources</a>
+      </nav>
+    </section>
+
+    <section id="games">
+      <h2>this week</h2>
+      <p class="sub">Games for your five teams. Percentages are Torvik's chance that the named team wins.</p>
+      <div id="days"></div>
+    </section>
+
+    <section id="teams">
+      <h2>your teams</h2>
+      <p class="sub">Villanova, Penn State, Denver, Michigan, Ohio State</p>
+      <div class="stories" id="stories"></div>
+    </section>
+
+    <section id="map">
+      <h2>efficiency map</h2>
+      <p class="sub">Defense is flipped so the best teams sit up and to the right. Hover a dot for the team.</p>
+      <figure class="figure">
+        <svg id="chart" viewBox="0 0 760 430" role="img" aria-label="Scatter chart of adjusted offense against adjusted defense for the top 50 teams, with Villanova, Penn State, Denver, Michigan and Ohio State marked."></svg>
+        <figcaption>Fig. 1. The top 50 teams by Torvik T-Rank, plus Penn State and Denver. Lower defense numbers are better, so the vertical axis runs downward.</figcaption>
+      </figure>
+    </section>
+
+    <section id="top50">
+      <h2>top 50</h2>
+      <p class="sub">Ranked by Torvik T-Rank. Click a column to sort. Tick Watch to follow more teams; the list stays in this browser.</p>
+      <div class="tools">
+        <label for="q" style="position:absolute;left:-9999px">Search teams</label>
+        <input id="q" type="search" placeholder="Search team, conference or note" />
+        <label for="conf" style="position:absolute;left:-9999px">Conference</label>
+        <select id="conf"><option value="">All conferences</option></select>
+        <label class="chk" for="mine"><input id="mine" type="checkbox" /> Followed teams only</label>
+        <span class="count num" id="count" aria-live="polite"></span>
+      </div>
+      <div class="table-scroll">
+        <table class="m-table" id="tbl">
+          <thead><tr id="thead"></tr></thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+      <details class="cols">
+        <summary>what the columns mean</summary>
+        <dl>
+          <dt>AdjOE</dt><dd>Points scored per 100 possessions, adjusted for opponent. Higher is better.</dd>
+          <dt>AdjDE</dt><dd>Points allowed per 100 possessions, adjusted for opponent. Lower is better.</dd>
+          <dt>Net</dt><dd>AdjOE minus AdjDE.</dd>
+          <dt>Barthag</dt><dd>Torvik's estimated chance of beating an average Division I team.</dd>
+          <dt>WAB</dt><dd>Wins above bubble: results so far compared with what a typical bubble team would have against this schedule.</dd>
+          <dt>SOS</dt><dd>Sports-Reference strength of schedule in points per game. Positive means a tougher schedule.</dd>
+          <dt>AP, BPI</dt><dd>Latest AP poll rank and ESPN BPI rank. ESPN lists only its top 50, so lower-rated teams show &gt;50.</dd>
+          <dt>Tempo</dt><dd>Torvik's adjusted possessions per 40 minutes.</dd>
+        </dl>
+      </details>
+    </section>
+
+    <section id="sources">
+      <h2>sources</h2>
+      <div class="src-cols">
+        <div>
+          <h3>where the numbers come from</h3>
+          <ul>
+            <li><a href="https://barttorvik.com/trank.php?year=2027" target="_blank" rel="noopener">Bart Torvik T-Rank</a>, Nov 21, 2026</li>
+            <li><a href="https://www.sports-reference.com/cbb/seasons/men/2027-ratings.html" target="_blank" rel="noopener">Sports-Reference</a>, Nov 21, 2026</li>
+            <li><a href="https://www.espn.com/mens-college-basketball/bpi" target="_blank" rel="noopener">ESPN BPI</a>, Nov 20, 2026</li>
+            <li><a href="https://bleacherreport.com/articles/25533956-latest-2027-mens-ncaa-tournament-bracket-projections" target="_blank" rel="noopener">Bleacher Report bracket projections</a>, Nov 17, 2026</li>
+            <li><a href="https://denverpioneers.com/news/2026/6/2/mens-basketball-west-coast-conference-announces-mens-basketball-matchups-for-2026-27" target="_blank" rel="noopener">Denver Athletics, WCC matchups</a></li>
+            <li><a href="https://www.sportbusy.com/games/ncaam/14478285-michigan-wolverines-at-villanova-wildcats-2026-11-21/" target="_blank" rel="noopener">SportBusy, Michigan at Villanova tip time</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>reading this page</h3>
+          <p>This is a snapshot. Records, ranks and projections change daily, and the sources update on different schedules, so a record can trail a game or two.</p>
+          <p>The top 50 is ranked by T-Rank, not a bracket projection. Penn State (94th) and Denver (267th) are outside it, so they appear only under your teams.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrapper">
+      <span>&copy; <span id="year"></span> Jeff Ferguson</span>
+      <span>Built with HTML, CSS &amp; JS</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/madness-data.js"></script>
+  <script src="js/madness.js"></script>
+</body>
+</html>
